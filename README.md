@@ -6,52 +6,57 @@
 ![Serverless](https://img.shields.io/badge/Architecture-Serverless-success)
 ![Status](https://img.shields.io/badge/Status-Live-brightgreen)
 
-A simple **microservice-based backend** built with **Node.js**, containerized using **Docker**, and deployed on **Google Cloud Run** using a **serverless architecture**.
+A **full-stack microservice-based application** built with **Node.js** and **React**, containerized using **Docker**, and deployed on **Google Cloud Run** using a **serverless architecture**.
 
-This project demonstrates how independent services can communicate via REST APIs and be exposed through a **single entry point (API Gateway pattern)**.
+The project demonstrates how independent backend services communicate via REST APIs, are exposed through a **single entry point (API Gateway pattern)**, and are consumed by a frontend application.
 
 ---
 
 ## 🌐 Live Demo
 
-**Base URL**
-
+### Frontend (Cloud Run)
+```text
+https://frontend-XXXXX.a.run.app
+```
+### API Gateway (Cloud Run)
 ```text
 https://gateway-service-423624249820.europe-west1.run.app
 ```
-## Available Endpoints
-
+### Available Endpoints
 ```text
 GET /users
 GET /orders
 ```
-
-⚠️ Cloud Run uses scale-to-zero, so the service only runs when a request is received.
+⚠️ Cloud Run uses scale-to-zero, meaning the services only run when a request is received.
 
 ---
 
 ## 🧩 Microservices Overview
 
-| Service | Description |
-|---------|-------------|
-| User Service | Returns user information |
-| Order Service | Returns order data and calls User Service |
-| Gateway Service | Single entry point (API Gateway pattern) |
+**User Service**
+: Returns user information.
+
+**Order Service**
+: Returns order data and communicates with the User Service.
+
+**Gateway Service**
+: Acts as a single entry point and implements the API Gateway pattern.
+
+**Frontend**
+: React application that consumes the API Gateway.
 
 ---
 
 ## 🏗️ Architecture
-
 ```text
-Client
-  |
-  v
-Gateway Service (Cloud Run)
-  |
-  ├── User Service (Cloud Run)
-  └── Order Service (Cloud Run)
+React Frontend (Cloud Run)
+        |
+        v
+API Gateway (Cloud Run)
+        |
+        ├── User Service (Cloud Run)
+        └── Order Service (Cloud Run)
 ```
-
 - Each service is independently deployable
 
 - Services communicate via REST (HTTP)
@@ -61,10 +66,11 @@ Gateway Service (Cloud Run)
 ---
 
 ## 🐳 Containerization
+Each service (backend and frontend) is packaged as a Docker container.
 
-Each microservice is packaged as a Docker container:
+Benefits:
 
-- Same runtime everywhere
+- Same runtime environment everywhere
 
 - No environment mismatch
 
@@ -74,9 +80,10 @@ Each microservice is packaged as a Docker container:
 Docker → Cloud Run → Live Service
 ```
 
-## ☁️ Cloud & Serverless
+---
 
-The application is deployed on Google Cloud Run, which provides:
+## ☁️ Cloud & Serverless
+The application is deployed entirely on Google Cloud Run, which provides:
 
 - ✅ Automatic scaling
 
@@ -90,8 +97,8 @@ No virtual machines, no manual scaling, no server management.
 
 ---
 
-
-## 🛠️ Tech Stack
+🛠️ Tech Stack
+- Frontend: React (Vite)
 
 - Backend: Node.js (Express)
 
@@ -105,24 +112,13 @@ No virtual machines, no manual scaling, no server management.
 
 ---
 
-## 💰 Cost & Safety
-
-- Uses Google Cloud Free Tier
-
-- No background processes
-
-- No cost when there is no traffic
-
-- Safe for demos, assignments, and portfolios
-
----
-
 ## 📌 Project Structure
 ```text
 microservices-demo/
 ├── user-service/
 ├── order-service/
 ├── gateway-service/
+├── frontend/
 ├── README.md
 └── .gitignore
 ```
@@ -130,7 +126,6 @@ microservices-demo/
 ---
 
 ## 🎓 Academic / Portfolio Notes
-
 This project was built to demonstrate:
 
 - Microservice architecture
@@ -139,7 +134,9 @@ This project was built to demonstrate:
 
 - Serverless cloud infrastructure
 
--  API Gateway design pattern
+- API Gateway design pattern
+
+- Full-stack cloud deployment
 
 It is suitable for:
 
