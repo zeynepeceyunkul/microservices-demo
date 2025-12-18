@@ -16,7 +16,7 @@ The project demonstrates how independent backend services communicate via REST A
 
 ### Frontend (Cloud Run)
 ```text
-https://frontend-XXXXX.a.run.app
+https://frontend-423624249820.europe-west1.run.app
 ```
 ### API Gateway (Cloud Run)
 ```text
