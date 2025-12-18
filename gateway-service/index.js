@@ -3,6 +3,13 @@ const axios = require("axios");
 
 const app = express();
 
+// ✅ CORS middleware (EN KRİTİK SATIRLAR)
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 // USER SERVICE proxy
 app.get("/users", async (req, res) => {
   try {
